@@ -2,14 +2,12 @@ var input = require("fs").readFileSync("stdin", "utf8").split('\r\n');
 
 var maior = 0;
 var N = +input[0];
-var index = 1;
-var i;
 
-while (N !== 0) {
+// while (N !== 0) {
     maior = 0;
 
     //PEGA O BLOCO DE FRASES DE ACORDO COM O 'N' PASSADO
-    for (i = index; i < index + N; i++) {
+    for (i = 0; i <= N; i++) {
 
         //CORTA OS ESPAÇOS DESNECESSÁRIOS
         input[i] = input[i].trim().replace(/[ ]+/g, ' ');
@@ -20,23 +18,19 @@ while (N !== 0) {
         }
     }
 
-    for (i = index; i < index + N; i++) {
+    for (i = 0; i <= N; i++) {
 
         //PEGA O VALOR DA MAIOR FRASE E ATRIBUI O PADSTART PARA O RESTANTE DAS FRASES
-        console.log(input[i].padStart(maior));
+        input[i] = input[i].padStart(maior);
     }
+    
+    input = input.slice(N + 1);
 
+    console.log(input)
 
-    N = +input[index + N];
+    N = input[N + 1]; 
 
     if (N !== 0) {
         console.log('');
     }
-
-    index = i + 1;
-}
-
-// console.log(input[0])
-var teste = input.slice(+input[0] + 1);
-
-console.log(teste);
+// }
