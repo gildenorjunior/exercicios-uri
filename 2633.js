@@ -5,6 +5,7 @@ function Carnes(tipo, validade) {
   this.validade = validade;
 }
 
+controlador = 0;
 while (input.length && input) {
   PRIMEIRO_INDEX = 0;
   auxiliar = [];
@@ -32,7 +33,10 @@ while (input.length && input) {
     return item.tipo;
   });
 
-  console.log(
-    saida.toString().replace(/[ ]+/g, ", ").trim().replace(/[,]+/g, " ")
-  );
+  if (controlador !== 0) {
+    console.log();
+  }
+
+  controlador = 2;
+  process.stdout.write(saida.join(" "));
 }

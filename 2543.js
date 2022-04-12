@@ -1,23 +1,26 @@
-var input = require("fs").readFileSync("stdin", "utf8").split('\r\n');
+var input = require("fs").readFileSync("stdin", "utf8").split("\r\n");
 
-var casoTeste = input.shift().split(" ");
-var numeroDeCasos = casoTeste[0];
-var id = parseInt(casoTeste[1]);
-var counter = 0;
+var out = "";
+var max;
+var i = 0;
+var N = 0;
+var idJogo;
 
-var teste = input.map((item) => {
-    return item.split(" ");
-})
+while (input.length > N) {
+  let dados = input[i].split(" ");
+  N = +dados[0] + N;
+  idJogo = dados[1];
+  max = 0;
 
-console.log(teste)
-
-teste.forEach((array) => {
-    var num = parseInt(array[1]);
-    var id1 = parseInt(array[0]);
-    if (num === 0 && id === id1) {
-        counter++
+  for (i; i <= N; i++) {
+    dados = input[i].split(" ");
+    if (dados[0] == idJogo && dados[1] == "0") {
+      max++;
     }
-})
+  }
 
+  out = out.concat(max).concat("\n");
+  N = i;
+}
 
-console.log(counter);
+console.log(out.substring(0, out.length - 3));
