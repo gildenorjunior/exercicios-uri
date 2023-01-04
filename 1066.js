@@ -1,28 +1,34 @@
-var input = require("fs").readFileSync("stdin", "utf8").split('\n');
+var input = require("fs").readFileSync("stdin", "utf8").split('\r\n');
 
-var par = 0;
-var impar = 0;
-var positivo = 0;
-var negativo = 0;
+let par = 0;
+let impar = 0;
+let positivo = 0;
+let negativo = 0;
 
-input.forEach((linha) => {
-    +linha
+function ehImpar(n) {
+    return n % 2 !== 0;
+}
 
-    if (linha % 2 == 0) {
-        par++;
-    } else if (linha % 2 != 0) {
-        impar++;
-    } else if (linha < 0){
-        negativo++;
-    } else if(linha > 0){
+for (let i = 0; i < 5; i++) {
+    const element = Number(input[i]);
+
+    if (element > 0) {
         positivo++;
+    } else if (element < 0) {
+        negativo++;
     }
-})
 
-console.log('par: ', par)
-console.log('impar: ', impar)
-console.log(negativo)
-console.log(positivo)
+    if (ehImpar(element)) {
+        impar++;
+    } else {
+        par++;
+    }
+}
+
+console.log(par, 'valor(es) par(es)');
+console.log(impar, 'valor(es) impar(es)');
+console.log(positivo, 'valor(es) positivo(s)');
+console.log(negativo, 'valor(es) negativo(s)');
 
 
 
